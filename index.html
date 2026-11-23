@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Little Scrapbook</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #fff0f5;
+    color: #87566b;
+    font-family: Georgia, serif;
+    text-align: center;
+}
+
+header {
+    background: linear-gradient(135deg, #f6bfd2, #ffe1eb);
+    padding: 55px 15px;
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-style: italic;
+}
+
+button {
+    background: #d87599;
+    color: white;
+    border: none;
+    padding: 13px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 10px;
+    font-size: 15px;
+}
+
+button:hover {
+    background: #bd5e83;
+}
+
+h2 {
+    margin-top: 40px;
+}
+
+.album {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 30px;
+}
+
+.photo {
+    background: white;
+    padding: 12px 12px 25px;
+    box-shadow: 0 5px 15px #d8a5b7;
+    transform: rotate(-2deg);
+    transition: 0.3s;
+}
+
+.photo:nth-child(even) {
+    transform: rotate(2deg);
+}
+
+.photo:hover {
+    transform: rotate(0deg) scale(1.05);
+}
+
+.photo img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+}
+
+.photo p {
+    margin-top: 15px;
+}
+
+.note {
+    background: #fffafd;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px #eac2d2;
+}
+
+.heart {
+    font-size: 25px;
+    animation: beat 1s infinite alternate;
+}
+
+@keyframes beat {
+    from { transform: scale(1); }
+    to { transform: scale(1.3); }
+}
+
+footer {
+    padding: 30px;
+    background: #f8d1df;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="heart">♡</div>
+    <h1>My Little Scrapbook</h1>
+    <p class="subtitle">A little book full of memories</p>
+
+    <button onclick="putarMusik()">♫ Play Music</button>
+    <button onclick="pauseMusik()">Ⅱ Pause Music</button>
+
+    <audio id="musik" loop>
+        <source src="lagu.mp3" type="audio/mpeg">
+    </audio>
+</header>
+
+<h2>✿ Our Beautiful Memories ✿</h2>
+<p>Every picture tells a little story ♡</p>
+
+<div class="album" id="album"></div>
+
+<div class="note">
+    <h2>♡ Little Notes ♡</h2>
+    <p>
+        Setiap foto menyimpan cerita.
+        Setiap cerita memiliki kenangan.
+        Dan setiap kenangan akan selalu menjadi bagian
+        indah dalam hidup kita.
+    </p>
+    <div class="heart">💗</div>
+</div>
+
+<footer>
+    Made with love ♡
+</footer>
+
+<script>
+
+const foto = [
+    {nama: "Kenangan pertama ♡", file: "foto1.jpg"},
+    {nama: "Hari yang indah ✿", file: "foto2.jpg"},
+    {nama: "Momen bahagia ♡", file: "foto3.jpg"},
+    {nama: "Senyum terbaik 🌷", file: "foto4.jpg"},
+    {nama: "Our memories 💗", file: "foto5.jpg"},
+    {nama: "Forever memories ♡", file: "foto6.jpg"}
+];
+
+const album = document.getElementById("album");
+
+foto.forEach(item => {
+    album.innerHTML += `
+        <div class="photo">
+            <img src="foto/${item.file}" alt="${item.nama}">
+            <p>${item.nama}</p>
+        </div>
+    `;
+});
+
+function putarMusik() {
+    document.getElementById("musik").play();
+}
+
+function pauseMusik() {
+    document.getElementById("musik").pause();
+}
+
+</script>
+
+</body>
+</html>
